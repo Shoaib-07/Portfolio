@@ -484,6 +484,22 @@ img{
 /*--------------------------------------------------------------
 # Facts
 --------------------------------------------------------------*/
+
+
+@media (max-width: 1000px) {
+  .facts {
+      height: 350px;
+  }
+}
+
+
+
+
+
+
+
+
+
 .facts .count-box {
   padding: 30px 30px 25px 30px;
   margin-top: 30px;
@@ -1166,12 +1182,13 @@ button, input {
 }
 
 .waves {
-  position:relative;
+  position: relative;
   width: 100%;
-  height:35vh;
-  margin-bottom:-7px; /*Fix for safari gap*/
-  min-height:100px;
-  max-height:150px;
+  height: 20vh; /* Adjust for smaller screens */
+  min-height: 60px;
+  max-height: 150px;
+  margin-bottom: -7px; /* Fix for safari gap */
+  overflow: hidden; /* Prevents overflow on small screens */
 }
 
 .content {
@@ -1214,17 +1231,20 @@ button, input {
 /*Shrinking for mobile*/
 @media (max-width: 768px) {
   .waves {
-    position:relative;
-    height:60px;
-    min-height:60px;
+    height: 10vh; /* Reduce height on smaller screens */
+    min-height: 50px;
+    max-height: 80px;
   }
+
   .content {
-    height:30vh;
+    height: 30vh;
   }
+
   h1 {
-    font-size:24px;
+    font-size: 24px;
   }
 }
+
 /* wave end */
 
 #footer {
@@ -1301,19 +1321,42 @@ button, input {
 
 
 
+/* Wrap circles to contain overflow */
+.circle-wave-container {
+  position: fixed; /* Fix to bottom-right of the screen */
+  bottom: -10px; /* Position from the bottom */
+  right: -10px; /* Position from the right */
+  width: 0; /* Set width and height to 0 to avoid container taking space */
+  height: 0;
+  z-index: 10; /* Ensure circles are above other content */
+  pointer-events: none; /* Prevent the container from blocking interactions with other elements */
+}
 
+/* Background for the circles */
+.ripple-background {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0; /* Set width and height to 0 */
+  height: 0;
+  display: flex;
+  justify-content: center; /* Center all circles horizontally */
+  align-items: flex-end; /* Align all circles to the bottom */
+  pointer-events: none;
+}
 
-
-
-/* circle wave shade start */
-.circle{
+/* Circle wave shades and animations */
+.circle {
   position: absolute;
   border-radius: 50%;
   background: white;
-  animation: ripple 10s infinite;
+  animation: ripple 12s infinite;
   box-shadow: 0px 0px 1px 0px #508fb9;
+  transform-origin: bottom right;
+  z-index: -1;
 }
 
+/* Sizes for the circles */
 .small{
   width: 200px;
   height: 200px;
@@ -1349,36 +1392,23 @@ button, input {
   bottom: -500px;
 }
 
-.shade1{
-  opacity: 0.04;
-}
-.shade2{
-  opacity: 0.06;
-}
+/* Adjust opacity for each circle */
+.shade1 { opacity: 0.03; }
+.shade2 { opacity: 0.05; }
+.shade3 { opacity: 0.07; }
+.shade4 { opacity: 0.09; }
+.shade5 { opacity: 0.11; }
 
-.shade3{
-  opacity: 0.08;
-}
-
-.shade4{
-  opacity: 0.10;
-}
-
-.shade5{
-  opacity: 0.12;
-}
-
-@keyframes ripple{
-  0%{
-    transform: scale(0.5);
+/* Ripple animation (same for all circles) */
+@keyframes ripple {
+  0% {
+    transform: scale(0.5); /* Start with a smaller scale */
   }
-  
-  50%{
-    transform: scale(1.5);
+  50% {
+    transform: scale(1.5); /* Grow to the original size */
   }
-  
-  100%{
-    transform: scale(0.5);
+  100% {
+    transform: scale(0.5); /* Shrink back to the smaller size */
   }
 }
 
