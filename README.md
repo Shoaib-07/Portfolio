@@ -34,7 +34,7 @@ The website is designed to provide a clean and interactive user experience, high
 1. Clone the repository:
 
 ```bash id="9m4bxt"
-git clone https://github.com/<your-username>/portfolio.git
+git clone https://github.com/Shoaib-07/portfolio.git
 cd portfolio
 ```
 
