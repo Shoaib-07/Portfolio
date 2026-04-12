@@ -28,19 +28,6 @@ The website is designed to provide a clean and interactive user experience, high
 
 ---
 
-## 📂 Project Structure
-
-```id="q7h3ks"
-portfolio/
-│── index.html
-│── assets/
-│   ├── style.css
-│   ├── script.js
-│   ├── images/
-│   └── icons/
-│── README.md
-
----
 
 ## ▶️ How to Run
 
